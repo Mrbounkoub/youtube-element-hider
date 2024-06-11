@@ -32,31 +32,31 @@ Firefox: SOON
 
 4. Click on "Load unpacked" and select the directory where you cloned/downloaded this repository.
 
-// From the Chrome Web Store
+## From the Chrome Web Store
 
 Install from the Chrome Web Store
 
-// Usage
+## Usage
 
 1. Click on the YouTube Element Hider icon in your browser's toolbar.
 2. Use the toggle switches to hide or show specific elements on the current YouTube page.
 
 
-// Permissions
+## Permissions
 This extension requires the following permissions:
 
 - activeTab: To access the content of the currently active tab in the browser.
 - scripting: To dynamically execute JavaScript code to hide specific elements.
 - storage: To store user preferences for hiding specific elements.
 
-// Privacy Policy
+## Privacy Policy
 Your privacy is important to us.
 
-// License
+## License
 This project is licensed under the MIT License.
 
-// Contributing
+## Contributing
 We welcome contributions!
 
-// Contact
+## Contact
 If you have any questions or feedback, feel free to open an issue or contact me at apprildev@gmail.com
