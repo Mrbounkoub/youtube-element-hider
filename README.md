@@ -1,6 +1,6 @@
 # YouTube Element Hider
 
-![Extension Icon](images/icon128.png)
+![Extension Icon](images/icon_128.png)
 
 ## Overview
 
