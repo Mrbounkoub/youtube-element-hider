@@ -1,0 +1,197 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    overflow: hidden;
+    height: 100%;
+  }
+  
+  .container {
+    background: #fff;
+    border-radius: 16px;  /* Increased border-radius for more rounded corners */
+    padding: 20px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);  /* Slightly heavier shadow for more depth */
+    width: 280px; 
+    max-width: 500px;
+    overflow: hidden;  }
+  
+  .title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .subtitle {
+    font-size: 14px;
+    color: #555;  /* Lighter grey for subtitle text */
+    text-align: center;  /* Center the subtitle below the title */
+    margin-top: 5px;  /* Add some spacing between the title and subtitle */
+    font-weight: 400;  /* Lighter font weight */
+  }
+  .logo {
+    width: 48px;
+    height: auto;
+    margin-right: 12px;
+  }
+  
+  .title-text {
+    font-size: 18px;
+    color: #333;
+  }
+  
+  .section-title {
+    text-align: left;
+    font-weight: 700;
+    color: #2c3e50;
+    margin: 20px 0 10px 0;
+    font-size: 22px;
+  }
+  
+  .switch {
+    position: relative;
+    width: 50px;
+    height: 26px;
+    margin-right: 10px;
+    order: -1;
+  }
+  
+  .form-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #34495e;
+    margin-bottom: 0;
+  }
+  
+  .form-group label {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #bdc3c7;
+    transition: 0.3s;
+    border-radius: 30px;  /* Already rounded, but you can increase for a more pill-like look */
+  }
+  
+  .slider:before {
+    content: "";
+    position: absolute;
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 4px;
+    background-color: #fff;
+    transition: 0.3s;
+    border-radius: 50%;
+  }
+  
+  input:checked + .slider {
+    background-color: #1abc9c;
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(24px);
+  }
+  
+  hr {
+    border: 0;
+    border-top: 1px solid #ddd;
+    margin: 0;
+  }
+  
+  .footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    color: #888;
+    margin-top: 10px;
+  }
+  
+  .logo-container {
+    width: 100px;
+    height: auto;
+    margin-right: 8px;
+  }
+  
+  .logo-container img {
+    width: 100%;
+    height: auto;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+  }
+  
+  .logo-container:hover img {
+    filter: grayscale(0%);
+  }
+  
+  .version {
+    font-size: 10px;
+    color: #2e0d0d;
+  }
+  
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .col-md-6 {
+    width: 50%;
+    padding: 5px;
+  }
+  
+  @media (max-width: 576px) {
+    .col-12 {
+      width: 100%;
+    }
+    .form-group {
+      font-size: 12px;
+    }
+    .toggle-all-btn {
+        font-size: 14px;
+        padding: 8px 16px;
+      }
+  }
+  
+
+
+  .toggle-all-btn {
+    background-color: #27a34f;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .toggle-all-btn:hover {
+    background-color: #218c3c;
+    transform: scale(1.05);
+  }
+  
+  .toggle-all-btn:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 128, 0, 0.5);
+  }

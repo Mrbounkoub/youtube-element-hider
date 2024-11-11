@@ -1,29 +1,59 @@
 chrome.action.onClicked.addListener((tab) => {
   if (tab.url.includes("youtube.com")) {
-    // Execute the content script on the YouTube page
+    // Only execute the script if not already executed (e.g., already on YouTube)
     chrome.scripting.executeScript({
       target: { tabId: tab.id },
-      files: ["contentScript.js"]
+      files: ["popup.js"]
     });
 
-    // Change the badge text to indicate action (e.g., '✓' for success)
-    chrome.action.setBadgeText({ text: '✓' });
-    chrome.action.setBadgeBackgroundColor({ color: '#00FF00' });  // Green background for success
-    
-    // Animate the icon (temporary change to an animated icon)
+    // Update Badge once, avoid redundant calls
+    updateBadge('✓', '#27a34f', '#FFFFFF');
     animateIcon();
 
-    // Reset the badge after 1 second
+    // Clear badge text after a short delay
     setTimeout(() => {
-      chrome.action.setBadgeText({ text: '' });  // Clear the badge text after 1 second
+      updateBadge('', '', '');
     }, 1000);
   }
 });
 
-// Function to animate the extension icon (use a GIF or change the icon temporarily)
-function animateIcon() {
-  chrome.action.setIcon({ path: 'images/icon-animated.gif' });  // Use an animated GIF for the icon
-  setTimeout(() => {
-    chrome.action.setIcon({ path: 'images/icon48.png' });  // Reset the icon to default after 1 second
-  }, 1000);  // Reset after 1 second
+// Function to update the badge
+function updateBadge(text, backgroundColor, textColor) {
+  chrome.action.setBadgeText({ text });
+  chrome.action.setBadgeBackgroundColor({ color: backgroundColor });
+  chrome.action.setBadgeTextColor({ color: textColor });
 }
+
+// Function to animate the icon
+function animateIcon() {
+  chrome.action.setIcon({ path: 'images/icon-animated.gif' });
+  setTimeout(() => {
+    chrome.action.setIcon({ path: 'images/icon48.png' });
+  }, 1000);
+}
+
+// Listen for messages from the popup (e.g., for badge updates)
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  switch (message.action) {
+    case 'updateBadge':
+      const count = message.count;
+      if (count > 0) {
+        updateBadge(count.toString(), '#FF0000', '#FFFFFF');
+      } else {
+        updateBadge('', '', '');
+      }
+      break;
+    case 'resetCheckboxes':
+      // Clear storage for checkboxes when reset is triggered
+      chrome.storage.sync.clear();
+      break;
+  }
+});
+
+// Listen for tab updates to reset checkboxes when navigating to YouTube
+chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+  if (changeInfo.status === 'complete' && tab.url.includes("youtube.com")) {
+    chrome.runtime.sendMessage({ action: 'resetCheckboxes' });
+    chrome.runtime.sendMessage('reloadPopup');
+  }
+});
