@@ -29,6 +29,6 @@ The `Yeh! Focus` file allows users to toggle specific YouTube elements such as t
 Current Version: `1.3.0`  
 _Fetches and displays the version from `manifest.json`._
 
-![Footer Logo](images/Logo_Apprildev.png)
+![Footer Logo](images/logo-badge.png)
 
 This code offers an interactive and customizable way to hide YouTube elements directly from the extension’s popup.
